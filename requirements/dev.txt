@@ -22,6 +22,10 @@ click==8.1.3
     #   docstr-coverage
     #   flask
     #   pip-tools
+coverage[toml]==6.4
+    # via
+    #   -r coverage.in
+    #   pytest-cov
 dnspython==2.2.1
     # via email-validator
 docstr-coverage==2.2.0
@@ -47,7 +51,6 @@ flake8-polyfill==1.0.2
 flask==2.0.2
     # via
     #   -r app.in
-    #   -r tests.in
     #   flask-fomanticui
     #   flask-login
     #   flask-sqlalchemy
@@ -57,13 +60,9 @@ flask-fomanticui==0.0.2
 flask-login==0.6.1
     # via -r app.in
 flask-sqlalchemy==2.5.1
-    # via
-    #   -r app.in
-    #   -r tests.in
+    # via -r app.in
 flask-wtf==1.0.1
-    # via
-    #   -r app.in
-    #   -r tests.in
+    # via -r app.in
 idna==3.3
     # via
     #   email-validator
@@ -76,7 +75,6 @@ importlib-metadata==4.2.0
     #   -r docs.in
     #   -r docstr-cov.in
     #   -r style.in
-    #   -r tests.in
     #   click
     #   flake8
     #   pep517
@@ -132,7 +130,11 @@ pygments==2.12.0
 pyparsing==3.0.9
     # via packaging
 pytest==7.1.2
-    # via -r tests.in
+    # via
+    #   -r tests.in
+    #   pytest-cov
+pytest-cov==3.0.0
+    # via -r coverage.in
 pytz==2022.1
     # via babel
 pyyaml==6.0
@@ -164,6 +166,7 @@ sqlalchemy==1.4.36
 tomli==2.0.1
     # via
     #   black
+    #   coverage
     #   pep517
     #   pytest
 typed-ast==1.5.4
@@ -174,8 +177,9 @@ typing-extensions==4.2.0
     #   importlib-metadata
 urllib3==1.26.9
     # via requests
-werkzeug==2.1.2
+werkzeug==2.0.3
     # via
+    #   -r app.in
     #   flask
     #   flask-login
 wheel==0.37.1

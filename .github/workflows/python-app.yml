@@ -39,3 +39,9 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements/tests.txt ]; then pip install -r requirements/tests.txt; fi
         pytest
+    - name: Coverage
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements/coverage.txt ]; then pip install -r requirements/coverage.txt; fi
+        coverage erase
+        pytest -q tests/ --cov=app/ --cov-append --cov-report=term-missing --cov-fail-under=95 --cov-report xml

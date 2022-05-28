@@ -6,9 +6,10 @@ if t.TYPE_CHECKING:
     from flask.testing import FlaskClient
 
 
+
 @pt.fixture
 def app() -> "flask.Flask":
-    app = flask.Flask(__name__)
+    from entrypoint import app
     app.testing = True
     return app
 

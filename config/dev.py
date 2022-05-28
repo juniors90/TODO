@@ -1,5 +1,5 @@
 # config/dev.py
-from .default import __all__
+from .default import *
 
 APP_ENV = APP_ENV_DEVELOPMENT
 
