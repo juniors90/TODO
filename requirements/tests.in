@@ -1,5 +1,2 @@
-flask
+-r app.in
 pytest
-Flask-WTF
-Flask-SQLAlchemy
-importlib-metadata==4.2.0
