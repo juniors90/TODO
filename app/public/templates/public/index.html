@@ -24,7 +24,7 @@
            <div class="cardsWrap">
               <div class="segments">
                     {% for todo in todos %}
-                    <div class="segment" id="seg{{loop.index}}"><p>{{todo}}</p><div class="panelWrap"><button class="left floated ui red button">Delete</button><div class="right floated"><i class="star icon"></i><i class="check circle icon"></i></div></div></div>
+                    <div class="segment" id="seg{{loop.index - 1}}"><p>{{todo}}</p><div class="panelWrap"><button class="left floated ui red button">Delete</button><div class="right floated"><i class="star icon"></i><i class="check circle icon"></i></div></div></div>
                     {% endfor %}
                     
               </div>

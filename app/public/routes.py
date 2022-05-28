@@ -1,12 +1,10 @@
 from flask import (
-    abort,
-    make_response,
-    render_template,
-    redirect,
-    url_for,
-    request,
-    current_app,
     escape,
+    make_response,
+    redirect,
+    render_template,
+    request,
+    url_for,
 )
 
 from . import public_bp
@@ -30,7 +28,7 @@ def hello():
     user_ip = request.cookies.get("user_ip")
     user_ip = escape(user_ip)
     context = {
-        'user_ip': user_ip,
-        'todos': todos,
+        "user_ip": user_ip,
+        "todos": todos,
     }
     return render_template("public/index.html", **context)

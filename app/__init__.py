@@ -1,13 +1,17 @@
 from flask import Flask, render_template
-from flask_fomanticui import FomanticUI  # noqa
+
+from flask_fomanticui import FomanticUI
+
 from flask_login import LoginManager
+
 from flask_sqlalchemy import SQLAlchemy
 
-from app.common.filters import format_datetime
+from app.common.filters import format_datetime  # noqa: I100
 
 login_manager = LoginManager()
 db = SQLAlchemy()
 semantic = FomanticUI()
+
 
 def create_app(settings_module):
     app = Flask(__name__, instance_relative_config=True)
@@ -57,5 +61,5 @@ def register_error_handlers(app):
         return render_template("404.html"), 404
 
     @app.errorhandler(401)
-    def error_404_handler(e):
+    def error_401_handler(e):
         return render_template("401.html"), 401

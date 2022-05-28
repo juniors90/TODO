@@ -1,5 +1,5 @@
 # config/testing.py
-from .default import *
+from .default import __all__
 
 # Parámetros para activar el modo debug
 
@@ -9,4 +9,4 @@ DEBUG = True
 
 APP_ENV = APP_ENV_TESTING
 
-SQLALCHEMY_DATABASE_URI = 'postgresql://db_user:db_pass@host:port/db_name'
+SQLALCHEMY_DATABASE_URI = "postgresql://db_user:db_pass@host:port/db_name"
