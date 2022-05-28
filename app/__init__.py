@@ -16,7 +16,9 @@ semantic = FomanticUI()
 def create_app(settings_module):
     app = Flask(__name__, instance_relative_config=True)
     # Load the config file specified by the APP environment variable
+    
     app.config.from_object(settings_module)
+    
     # Load the configuration from the instance folder
 
     login_manager.init_app(app)
