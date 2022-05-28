@@ -1,1 +1,2 @@
 docstr-coverage
+importlib-metadata==4.2.0
