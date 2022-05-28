@@ -1,0 +1,57 @@
+
+{% extends '_base.html' %}
+{% block title %} {{ super()}} Welcome{% endblock %}
+{% block content %}
+<h1>TODO List - Demo Application</h1>
+{% if user_ip %}
+    <p>Este es el user IP: {{ user_ip }}</p>
+{% else %}
+    <a href="{{ url_for('index') }}">Ir a index</a>
+{% endif %}
+<div class="wrapCenter whiteBG" id="todoList">
+        <div class="todoWrap">
+           <div class="ui form">
+              <div class="field">
+                   <div class="navTextarea">
+                     <label class="infoLabel">Short Task</label>
+                     <label id="clear">Clear all tasks</label>
+                   </div>
+                   <textarea placeholder="The was a beautiful day..." rows="3" id="taskArea"></textarea>
+                   <div class="ui blue labeled submit icon button" id="taskButton"><i class="icon edit"></i> Add Task </div>
+              </div>
+           </div>
+           
+           <div class="cardsWrap">
+              <div class="segments">
+                    {% for todo in todos %}
+                    <div class="segment" id="seg{{loop.index}}"><p>{{todo}}</p><div class="panelWrap"><button class="left floated ui red button">Delete</button><div class="right floated"><i class="star icon"></i><i class="check circle icon"></i></div></div></div>
+                    {% endfor %}
+                    
+              </div>
+           </div>
+        </div>
+     </div>
+     
+     <!-- MODAL -->
+     <div class="ui basic modal tiny  yesOrNot">
+        <div class="header">Are You Sure?</div>
+        <div class="content">
+           <div class="description">
+              <p>All task need to do, may you will better after that :)</p>
+           </div>
+        </div>
+        <div class="actions">
+           <div class="two fluid ui inverted buttons">
+              <div class="ui cancel red basic inverted button">
+                 <i class="remove icon"></i>
+                 No
+              </div>
+              <div id="agreeDeleteTask" class="ui ok green basic inverted button">
+                 <i class="checkmark icon"></i>
+                 Yes
+              </div>
+           </div>
+        </div>
+     </div>
+
+{% endblock %}

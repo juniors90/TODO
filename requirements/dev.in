@@ -1,0 +1,8 @@
+-r app.in
+-r coverage.in
+-r docs.in
+-r docstr-cov.in
+-r style.in
+-r test.in
+black
+pip-tools
