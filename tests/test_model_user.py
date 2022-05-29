@@ -10,7 +10,7 @@ def test_create_user(db):
     user2.set_password("password2")
     user2.save()
     count = db.session.query(User).count()
-    assert count is 2
+    assert count == 2
 
 """
 def test_meeting_creation(db):
