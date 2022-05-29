@@ -6,3 +6,7 @@ def test_sample_request(app, client):
     r = client.get('/sample')
     assert r.status_code == 200
     assert r.data == b'OK'
+    
+    r = client.get('/login')
+    assert r.status_code == 200
+    assert b"<h1>Login</h1>" in r.data

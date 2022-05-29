@@ -45,6 +45,8 @@ def create_app(settings_module):
 
     # Custom error handlers
     register_error_handlers(app)
+    with app.app_context():
+        db.create_all()
 
     return app
 

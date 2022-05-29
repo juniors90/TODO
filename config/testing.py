@@ -1,5 +1,5 @@
 # config/testing.py
-from .default import __all__
+from .default import *
 
 # Parámetros para activar el modo debug
 
