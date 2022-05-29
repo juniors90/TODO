@@ -12,7 +12,9 @@ if t.TYPE_CHECKING:
 
 @pt.fixture
 def app() -> "flask.Flask":
-    from entrypoint import app
+    import os
+    settings_module = os.getenv("APP_SETTINGS_MODULE")
+    app = create_app(settings_module=testing)
     app.testing = True
     return app
 
