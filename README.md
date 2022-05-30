@@ -49,7 +49,7 @@ $> gcloud config list
 [core]
 account = username@gmail.com
 disable_usage_reporting = False
-project = flask-123456
+project = <project-name>
 
 Your active configuration is: [default]
 ```
@@ -76,3 +76,14 @@ Your active configuration is: [default]
 # conexion a la base de datos:
 
 [Firebase](https://firebase.google.com/docs/admin/setup/#python) en Python.
+
+[Crear claves](https://cloud.google.com/docs/authentication/getting-started#create-service-account-gcloud)
+
+def implicit():
+    from google.cloud import storage
+    # If you don't specify credentials when constructing the client, the
+    # client library will look for credentials in the environment.
+    storage_client = storage.Client()
+    # Make an authenticated API request
+    buckets = list(storage_client.list_buckets())
+    print(buckets)
