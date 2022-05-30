@@ -2,22 +2,18 @@ from flask_login import UserMixin
 
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from app import db
+from app.firestore_service import db
 
 
-class User(db.Model, UserMixin):
-
-    __tablename__ = "blog_user"
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    email = db.Column(db.String(256), unique=True, nullable=False)
-    password = db.Column(db.String(128), nullable=False)
-    is_admin = db.Column(db.Boolean, default=False)
-
-    def __init__(self, name, email):
+class User(UserMixin):
+    def __init__(self, name, email, password, is_admin=False):
         self.name = name
         self.email = email
+        self.password = password
+        self.is_admin = is_admin
+
+    def get_id(self):
+        return (self.email)
 
     def __repr__(self):
         return f"<User {self.email}>"
@@ -29,22 +25,23 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def save(self):
-        if not self.id:
-            db.session.add(self)
-        db.session.commit()
+        pass
 
     def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+        pass
 
     @staticmethod
-    def get_by_id(id):
-        return User.query.get(id)
+    def get_by_id(user_id):
+        user_doc = db.collection("users").document(user_id).get()
+        name = user_doc.to_dict()['name']
+        email = user_doc.id
+        password = user_doc.to_dict()['password']
+        return User(name=name, email=email, password=password, is_admin=False)
 
     @staticmethod
     def get_by_email(email):
-        return User.query.filter_by(email=email).first()
+        return self.get_by_id(user_id=email)
 
     @staticmethod
     def get_all():
-        return User.query.all()
+        return db.collection("users").get()

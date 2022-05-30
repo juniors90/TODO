@@ -4,31 +4,34 @@ from flask import (
     redirect,
     render_template,
     request,
+    session,
     url_for,
 )
+from flask_login import current_user, login_required
 
 from . import public_bp
-
-
-todos = ["RODO 1", "RODO 2", "RODO 3", "RODO 4", "RODO 5"]
+from app.firestore_service import get_todos, get_users
 
 
 @public_bp.route("/")
+@login_required
 def index():
     user_ip = request.remote_addr
-
+    session["user_ip"] = user_ip
     response = make_response(redirect(url_for("public.hello")))
-    response.set_cookie("user_ip", user_ip)
 
     return response
 
 
 @public_bp.route("/hello")
+@login_required
 def hello():
-    user_ip = request.cookies.get("user_ip")
-    user_ip = escape(user_ip)
+    user_ip = session.get("user_ip")
+    username = session.get("email")
+    todos = get_todos(user_id=username)
     context = {
         "user_ip": user_ip,
         "todos": todos,
+        "username": username,
     }
     return render_template("public/index.html", **context)

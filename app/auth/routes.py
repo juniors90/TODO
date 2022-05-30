@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, session, url_for
 
 from flask_login import current_user, login_user, logout_user
 
@@ -47,15 +47,24 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for("public.index"))
     form = LoginForm()
+    context = {
+        "form": form,
+    }
     if form.validate_on_submit():
-        user = User.get_by_email(form.email.data)
-        if user is not None and user.check_password(form.password.data):
-            login_user(user, remember=form.remember_me.data)
-            next_page = request.args.get("next")
-            if not next_page or url_parse(next_page).netloc != "":
-                next_page = url_for("public.index")
-            return redirect(next_page)
-    return render_template("auth/login_form.html", form=form)
+        user_id = form.email.data
+        password = form.password.data
+        remember=form.remember_me.data
+        try:
+            user = User.get_by_id(user_id)
+            if user is not None and user.check_password(password):
+                login_user(user, remember=remember)
+                next_page = request.args.get("next")
+                if not next_page or url_parse(next_page).netloc != "":
+                    next_page = url_for("public.index")
+                return redirect(next_page)
+        except TypeError:
+            return render_template("auth/login_form.html", **context)
+    return render_template("auth/login_form.html", **context)
 
 
 @auth_bp.route("/logout")
@@ -66,4 +75,4 @@ def logout():
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get_by_id(int(user_id))
+    return User.get_by_id(user_id)

@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %} Flask-FomaticUI - {% endblock %}</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/login.css') }}"
+    >
     {{ fomantic.load_css() }}
     {% block style %}{% endblock %}
 </head>
 <body>
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 </body>
 </html>

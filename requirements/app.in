@@ -1,6 +1,7 @@
 email-validator
 Flask==2.0.2
 Werkzeug==2.0.3
+firebase-admin
 Flask-FomanticUI
 Flask-Login
 Flask-SQLAlchemy

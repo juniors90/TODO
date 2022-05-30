@@ -1,0 +1,78 @@
+body{
+	font-family: 'Lato', sans-serif;
+	height: 0px;
+}
+
+.page-center{
+	width: 500px;
+	height: 350px;
+	margin: 0 auto;
+	margin-top: 12%;
+	box-shadow: 0px 8px 20px 0px #eee;
+}
+
+.title-login{
+	width: auto;
+	height: 62px;
+	background-color: #1678C2;
+	border-radius: 2px 2px 0px 0px;
+	border: thin solid #1678C2;
+}
+
+.title-login h3{
+	margin-left: 12%;
+	padding-top: 15px;
+	font-family: 'Lato', sans-serif;
+	color: #FFF;
+}
+
+#title-login{
+	margin-left: 0%;
+	padding-top: 0px;
+	font-family: 'Lato', sans-serif;
+	color: #FFF;
+}
+
+.login{
+	width: 500px;
+	height: 300px;
+	border: thin solid #DDD;
+	background-color: #FFF;
+}
+
+.login-components{
+	margin-top: 10%;
+	margin-left: 12%;
+}
+
+/*CLASSES DE HERANÇA*/
+
+.label-block{
+	display: block;
+	padding-bottom: 20px;
+}
+
+#name, #email, #password{
+	width: 380px;
+	height: 40px;
+}
+
+.btn-login-fb-size{
+	width: 273px;
+}
+
+#btn-login-fb-size{
+	width: 296px;
+}
+
+.forgot{
+	margin-top: 20px;
+	width: auto;
+	height: 40px;
+}
+
+.forgot-button{
+	border: none;
+	background-color: #F2f2f2;
+	width: auto;
+}

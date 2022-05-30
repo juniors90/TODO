@@ -5,7 +5,6 @@
     <div class="ui simple dropdown teal item">
         Form Types<i class="dropdown icon"></i>
         <div class="menu">
-            
             {{ render_ui_nav_item('public.hello', 'Login Form', 'lock', 'teal') }}
         </div>
     </div>
@@ -13,11 +12,13 @@
     <div class="ui simple dropdown teal item">
         Sample dropdown <i class="dropdown icon"></i>
         <div class="menu">
-        <a class="item" href="#" target="_blank"><i class="file code outline icon"></i>Documentation</a>
-        <a class="item" href="https://fomantic-ui.com/" target="_blank"><i class="file code icon"></i>Fomantic UI Docs</a>
-        <a class="item" href="https://github.com/juniors90/Flask-FomanticUI" target="_blank"><i class="github icon"></i>GitHub</a>
+            <a class="item" href="#" target="_blank"><i class="file code outline icon"></i>Documentation</a>
+            <a class="item" href="https://fomantic-ui.com/" target="_blank"><i class="file code icon"></i>Fomantic UI Docs</a>
+            <a class="item" href="https://github.com/juniors90/Flask-FomanticUI" target="_blank"><i class="github icon"></i>GitHub</a>
+        </div>
     </div>
-    </div>
+    {{ render_ui_nav_item('auth.logout', 'Logout', 'logout', 'teal') }}
+
 
     <div class="right item">
         <div class="ui input">

@@ -1,0 +1,8 @@
+{% extends 'auth/_base.html' %}
+{% from "auth/_macros.html" import render_signup %}
+
+{% block title %} {{ super()}} signup{% endblock %}
+
+{% block content %}
+    {{ render_signup(form=form,title="Sigup") }}
+{% endblock %}

@@ -9,4 +9,4 @@ def test_sample_request(app, client):
     
     r = client.get('/login')
     assert r.status_code == 200
-    assert b"<h1>Login</h1>" in r.data
+    assert b"Login" in r.data

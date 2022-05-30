@@ -1,0 +1,87 @@
+{% from "fomantic/utils.html" import render_ui_messages %}
+
+
+{% macro render_field(field, icon)%}
+<div class="ui field left icon input lock">
+    <label class="label-block" for="{{ field.label.text|lower }}"></label>
+    {{ field }}
+    <i class="{{ icon }} icon"></i>
+</div>
+{% endmacro %}
+
+
+{% macro remember_field(field) %}
+<div class="inline field">
+        <div class="ui checkbox">
+            {{ field(tabindex="0", class="hidden") }}
+            {{ field.label }}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro render_login_form(form) %}
+<form class="ui form error login" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="login-components">
+        {{ render_field(form.email, "mail primary")}}
+        {{ render_field(form.password, "lock primary")}}
+        {{ remember_field(form.remember_me) }}
+        {{ form.submit(class="ui primary button") }}
+        <button class="ui facebook button" id="btn-login-fb-size">
+              <i class="facebook icon"></i>
+              Entrar com Facebook
+        </button>
+    </div><!-- login-components -->
+    </br>
+    <center><a href="#">Esqueceu a Senha?</a></center>
+</form><!-- login -->
+{% endmacro %}
+
+
+{% macro render_signup_form(form) %}
+<form class="ui form error login" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="login-components">
+        {{ render_field(form.name, "user primary")}}
+        {{ render_field(form.email, "mail primary")}}
+        {{ render_field(form.password, "lock primary")}}
+        {{ form.submit(class="ui primary button") }}
+        <button class="ui facebook button btn-login-fb-size">
+            <i class="facebook icon"></i>
+            Entrar com Facebook
+        </button>
+    </div><!-- login-components -->
+    </br>
+    <center><a href="#">Esqueceu a Senha?</a></center>
+</form><!-- login -->
+{% endmacro %}
+
+{% macro render_header(page)%}
+<div class="title-login">
+    <h2 class="ui image header">
+    <img src="{{ url_for('static', filename='assets/images/logo.png') }}" class="image">
+        <div class="content" id="title-login">
+          {{ page }}
+    </div>
+</h2>
+</div>
+{% endmacro %}
+
+{% macro render_signup(form, title) %}
+<div class="page-center">
+    <!-- title-signup -->
+    {{ render_header(title) }}
+    <!-- form-signup -->	
+    {{ render_signup_form(form) }}
+</div><!-- page-center -->
+{% endmacro %}
+
+{% macro render_login(form, title) %}
+<div class="page-center ui column">
+    <!-- title-signup -->
+    {{ render_header(title) }}
+    <!-- form-signup -->	
+    {{ render_login_form(form) }}
+</div><!-- page-center -->
+{% endmacro %}

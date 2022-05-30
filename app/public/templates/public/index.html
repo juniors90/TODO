@@ -6,7 +6,7 @@
 {% if user_ip %}
     <p>Este es el user IP: {{ user_ip }}</p>
 {% else %}
-    <a href="{{ url_for('index') }}">Ir a index</a>
+    <a href="{{ url_for('public.index') }}">Ir a index</a>
 {% endif %}
 <div class="wrapCenter whiteBG" id="todoList">
         <div class="todoWrap">
@@ -24,7 +24,7 @@
            <div class="cardsWrap">
               <div class="segments">
                     {% for todo in todos %}
-                    <div class="segment" id="seg{{loop.index - 1}}"><p>{{todo}}</p><div class="panelWrap"><button class="left floated ui red button">Delete</button><div class="right floated"><i class="star icon"></i><i class="check circle icon"></i></div></div></div>
+                    <div class="segment" id="seg{{loop.index - 1}}"><p>{{todo.to_dict().description}}</p><div class="panelWrap"><button class="left floated ui red button">Delete</button><div class="right floated"><i class="star icon"></i><i class="check circle icon"></i></div></div></div>
                     {% endfor %}
                     
               </div>
