@@ -1,0 +1,26 @@
+{% macro render_tasks(todos, delete_form) %}
+
+    {% for todo in todos %}
+    <div class="segment{% if todo.to_dict().state %} state{% endif %}{% if todo.to_dict().done %} done{% endif %}"
+        id="seg{{loop.index - 1}}">
+        <p>{{ todo.to_dict().task }}</p>
+        <div class="panelWrap">
+            <div class="left floated buttons">
+                <div class="ui buttons">
+                    <a href="{{ url_for('public.update_task_form', task_id=todo.id) }}" class="ui primary button">Edit</a>
+                    <div class="or"></div>
+                    <form class="ui form" method="POST" action="{{url_for('public.delete_task', task_id=todo.id)}}" novalidate>
+                        {{ delete_form.hidden_tag() }}
+                        {{ delete_form.delete_button }}
+                    </form>
+                </div>
+            </div>
+            <div class="right floated">
+                <i class="star icon"></i>
+                <i class="check circle icon"></i>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endmacro %}

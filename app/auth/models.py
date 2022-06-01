@@ -25,7 +25,12 @@ class User(UserMixin):
         return check_password_hash(self.password, password)
 
     def save(self):
-        pass
+        user_data = db.collection("users").document(self.email)
+        user_data.set({
+            'name': self.name,
+            'password': self.password,
+            'is_admin': self.is_admin
+        })
 
     def delete(self):
         pass
@@ -37,10 +42,6 @@ class User(UserMixin):
         email = user_doc.id
         password = user_doc.to_dict()['password']
         return User(name=name, email=email, password=password, is_admin=False)
-
-    @staticmethod
-    def get_by_email(email):
-        return self.get_by_id(user_id=email)
 
     @staticmethod
     def get_all():

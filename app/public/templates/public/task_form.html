@@ -1,0 +1,28 @@
+<form class="ui form" method="POST" novalidate>
+    {{ task_form.hidden_tag() }}
+    <div class="field">
+        <div class="navTextarea">
+            <label class="infoLabel">Short Task</label>
+            <label id="clear">Clear all tasks</label>
+        </div>
+        {{ task_form.taskArea }}
+    </div>
+    <div class="ui form">
+        <div class="inline fields">
+            <label>what is the status of your new task?</label>
+            <div class="field">
+                <div class="ui radio checkbox">
+                    {{ task_form.done }}
+                    {{ task_form.done.label }}
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui radio checkbox">
+                    {{ task_form.state }}
+                    {{ task_form.state.label }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{task_form.taskButton }}
+</form>

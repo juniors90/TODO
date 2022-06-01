@@ -18,28 +18,33 @@ def show_signup_form():
         return redirect(url_for("public.index"))
     form = SignupForm()
     error = None
+    context = {
+        'form': form,
+        'error': error
+    }
+    
     if form.validate_on_submit():
         name = form.name.data
         email = form.email.data
         password = form.password.data
         # Comprobamos que no hay ya un usuario con ese email
-        user = User.get_by_email(email)
-        if user is not None:
-            error = (
-                f"El email {email} ya está siendo utilizado por otro usuario"
-            )
-        else:
-            # Creamos el usuario y lo guardamos
-            user = User(name=name, email=email)
+        try:
+            user = User.get_by_id(email)
+            if user is not None:
+                error = (
+                    f"El email {email} ya está siendo utilizado por otro usuario"
+                    )
+            return render_template("auth/signup_form.html", **context)
+        except TypeError:
+            user = User(name=name, email=email, password=password)
             user.set_password(password)
             user.save()
-            # Dejamos al usuario logueado
             login_user(user, remember=True)
             next_page = request.args.get("next", None)
             if not next_page or url_parse(next_page).netloc != "":
                 next_page = url_for("public.index")
             return redirect(next_page)
-    return render_template("auth/signup_form.html", form=form, error=error)
+    return render_template("auth/signup_form.html", **context)
 
 
 @auth_bp.route("/login", methods=["GET", "POST"])

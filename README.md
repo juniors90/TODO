@@ -87,3 +87,20 @@ def implicit():
     # Make an authenticated API request
     buckets = list(storage_client.list_buckets())
     print(buckets)
+
+
+
+# JavaScripts
+
+```
+{
+    items: [
+        {
+            "value":"hola",
+            "id": "0",
+            "done":false,
+            "state":false
+        }
+    ]
+}
+```
