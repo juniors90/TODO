@@ -4,12 +4,12 @@ from flask_fomanticui import FomanticUI
 
 from flask_login import LoginManager
 
-from flask_sqlalchemy import SQLAlchemy
+
 
 from app.common.filters import format_datetime  # noqa: I100
 
 login_manager = LoginManager()
-db = SQLAlchemy()
+
 semantic = FomanticUI()
 
 
@@ -24,7 +24,6 @@ def create_app(settings_module):
     login_manager.init_app(app)
     login_manager.login_view = "auth.login"
 
-    db.init_app(app)
     semantic.init_app(app)
 
     # Registro de los filtros
@@ -45,9 +44,7 @@ def create_app(settings_module):
 
     # Custom error handlers
     register_error_handlers(app)
-    with app.app_context():
-        db.create_all()
-
+    
     return app
 
 

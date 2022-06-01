@@ -1,11 +1,13 @@
 from os.path import abspath, dirname
 
 # Define the application directory
+from os.path import abspath, dirname, join
+import sys
+# Define the application directory
 BASE_DIR = dirname(dirname(abspath(__file__)))
+FILE_DIR = join(BASE_DIR,__name__)
+sys.path.append(FILE_DIR)
 SECRET_KEY = "71008f3a5d1616bf319bc298105da20fe"
-
-# Database configuration
-SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 # app.secret_key = 'dev'

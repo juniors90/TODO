@@ -4,6 +4,5 @@ Werkzeug==2.0.3
 firebase-admin
 Flask-FomanticUI
 Flask-Login
-Flask-SQLAlchemy
 Flask-WTF
 importlib-metadata==4.2.0

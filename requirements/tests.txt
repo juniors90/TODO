@@ -27,13 +27,10 @@ flask==2.0.2
     #   -r app.in
     #   flask-fomanticui
     #   flask-login
-    #   flask-sqlalchemy
     #   flask-wtf
 flask-fomanticui==0.0.2
     # via -r app.in
 flask-login==0.6.1
-    # via -r app.in
-flask-sqlalchemy==2.5.1
     # via -r app.in
 flask-wtf==1.0.1
     # via -r app.in
@@ -91,7 +88,6 @@ importlib-metadata==4.2.0
     #   click
     #   pluggy
     #   pytest
-    #   sqlalchemy
 iniconfig==1.1.1
     # via pytest
 itsdangerous==2.1.2
@@ -145,8 +141,6 @@ six==1.16.0
     #   google-auth
     #   google-auth-httplib2
     #   grpcio
-sqlalchemy==1.4.36
-    # via flask-sqlalchemy
 tomli==2.0.1
     # via pytest
 typing-extensions==4.2.0

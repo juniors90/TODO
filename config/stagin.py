@@ -1,6 +1,12 @@
 # config/staging.py
-from .default import __all__
+from os.path import abspath, dirname, join
+import sys
+# Define the application directory
+BASE_DIR = dirname(dirname(abspath(__file__)))
+FILE_DIR = join(BASE_DIR,__name__)
+sys.path.append(FILE_DIR)
 
-APP_ENV = APP_ENV_STAGING
+import default
 
-SQLALCHEMY_DATABASE_URI = "postgresql://db_user:db_pass@host:port/db_name"
+APP_ENV = default.APP_ENV_STAGING
+
