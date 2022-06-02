@@ -1,8 +1,13 @@
 import os
+from os.path import abspath, dirname, join
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred = credentials.Certificate(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'))
+# Define the application directory
+BASE_DIR = dirname(dirname(abspath(__file__)))
+FILE_DIR = join(BASE_DIR,'Flask-Platzi.json')
+
+cred = credentials.Certificate(FILE_DIR)
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
