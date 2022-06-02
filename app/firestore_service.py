@@ -1,10 +1,13 @@
 import os
-from firebase_admin import firestore, initialize_app 
+import firebase_admin
+from firebase_admin import credentials, firestore
 
-default_app = initialize_app()
-print(default_app.name)    # "[DEFAULT]"
+cred = credentials.Certificate(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'))
+firebase_admin.initialize_app(cred)
+
 db = firestore.client()
 
+print('Credendtials from environ: {}'.format(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')))
 
 def get_users():
     return db.collection("users").get()
