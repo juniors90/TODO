@@ -9,10 +9,10 @@ from flask import (
 )
 from flask_login import current_user, login_required
 
-from . import public_bp
+from app.public import public_bp
 from app.firestore_service import get_todos, get_users, save_todo
-from .forms import TaskForm, DeleteTaskForm
-from .models import Task
+from app.public.forms import TaskForm, DeleteTaskForm
+from app.public.models import Task
 
 
 @public_bp.route("/")

@@ -7,9 +7,9 @@ from werkzeug.urls import url_parse
 from app import login_manager
 
 # from app.common.mail import send_email
-from . import auth_bp
-from .forms import LoginForm, SignupForm
-from .models import User
+from app.auth import auth_bp
+from app.auth.forms import LoginForm, SignupForm
+from app.auth.models import User
 
 
 @auth_bp.route("/signup/", methods=["GET", "POST"])

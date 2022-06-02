@@ -18,6 +18,7 @@ def create_app(settings_module):
     # Load the config file specified by the APP environment variable
 
     app.config.from_object(settings_module)
+    app.secret_key="jhfuyd54275870yyfk5366e"
 
     # Load the configuration from the instance folder
 
@@ -30,15 +31,15 @@ def create_app(settings_module):
     register_filters(app)
 
     # Blueprint Registers
-    from .auth import auth_bp
+    from app.auth import auth_bp
 
     app.register_blueprint(auth_bp)
 
-    from .admin import admin_bp
+    from app.admin import admin_bp
 
     app.register_blueprint(admin_bp)
 
-    from .public import public_bp
+    from app.public import public_bp
 
     app.register_blueprint(public_bp)
 
