@@ -1,18 +1,8 @@
 import os
-import firebase_admin
-from firebase_admin import credentials, firestore, initialize_app
+from firebase_admin import firestore, initialize_app 
 
-
-project_id = os.getenv("PROYECT_ID")
-cred = credentials.ApplicationDefault()
-initialize_app(
-    cred,
-    {
-        "projectId": project_id,
-    },
-)
-
-
+default_app = initialize_app()
+print(default_app.name)    # "[DEFAULT]"
 db = firestore.client()
 
 

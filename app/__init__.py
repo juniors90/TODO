@@ -6,6 +6,7 @@ from flask_login import LoginManager
 
 
 
+
 from app.common.filters import format_datetime  # noqa: I100
 
 login_manager = LoginManager()
