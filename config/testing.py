@@ -16,3 +16,6 @@ TESTING = True
 DEBUG = True
 
 APP_ENV = default.APP_ENV_TESTING
+
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
